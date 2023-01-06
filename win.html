@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+
+    async function go() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "menu.html";
+    }
+
+    function playSong(){
+        new Audio("./sound/win.mp3").play()
+        new Audio("./sound/song.mp3").play()
+    }
+
+</script>
+
+<style>
+    body {
+        background-image: url("./img/bgWin.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    div.btnMain {
+        padding-left: 36%;
+        padding-top: 43%;
+    }
+
+</style>
+
+<body onload="playSong()">
+    <div class="btnMain">
+        <img src="./img/btnMain.png" onclick="go()" />
+    </div>
+</body>
+
+</html>

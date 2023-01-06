@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+    function init() {
+        new Audio("./sound/song.mp3").play()
+        correct = parseInt(6)
+        btnNext = document.getElementById("btnNext")
+        btnAns = document.getElementById("btnAns")
+        btnHome = document.getElementById("btnHome")
+        btnNext.style.display = "none"
+        signC.style.display = "none"
+        signW.style.display = "none"
+    }
+    function checkAns() {
+        textinput = document.getElementById("textinput").value
+        guess = parseInt(textinput)
+        if (guess == correct) {
+            new Audio("./sound/correct.mp3").play()
+            btnAns.style.display = "none"
+            btnNext.style.display = "block"
+            btnHome.style.display = "none"
+
+            signQ.style.display = "none"
+            signW.style.display = "none"
+            signC.style.display = "block"
+
+            image.src = "./img/signC_C.png";
+        } else {
+            new Audio("./sound/wrong.mp3").play()
+            signQ.style.display = "none"
+            signW.style.display = "block"
+        }
+    }
+
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+
+    async function goWin() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "win.html";
+    }
+
+    async function goHome() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "main.html";
+    }
+
+</script>
+
+<style>
+    body {
+        background-image: url("./img/bgCounting3.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    div.pic {
+        padding-left: 1.5%;
+        padding-top: 2%;
+    }
+
+    div.sign {
+        padding-left: 9%;
+        padding-top: 2%;
+    }
+
+    input {
+        margin-left: 4.2%;
+        margin-top: 2%;
+        font-size: 60px;
+        width: 15%;
+        text-align: center;
+        font-family: cursive;
+        font-weight: bold;
+    }
+
+    div.btnAns {
+        padding-left: 3.2%;
+        padding-top: 2%;
+    }
+
+    div.btnNext {
+        padding-left: 7%;
+    }
+
+    div.btnHome {
+        padding-top: 1.5%;
+        padding-left: 1%;
+    }
+
+    div.signW {
+        padding-left: 8%;
+    }
+</style>
+
+<body onload="init()">
+    <div class="pic">
+        <img src="./img/picStageC3.png">
+    </div>
+    <div class="sign">
+        <img id="signQ" src="./img/signC_Q.png" />
+        <img id="signC" src="./img/signC_C.png" />
+    </div>
+    <div class="signW">
+        <img id="signW" src="./img/signC_W.png" />
+    </div>
+    <div>
+        <input type="text" id="textinput">
+    </div>
+    <div class="btnAns">
+        <img src="./img/btnAnsC.png" id="btnAns" onclick="checkAns()">
+    </div>
+    <div class="btnNext">
+        <img src="./img/btnNextC.png" id="btnNext" onclick="goWin()">
+    </div>
+    <div class="btnHome">
+        <img src="./img/homeC.png" id="btnHome" onclick="goHome()">
+    </div>
+</body>
+
+</html>

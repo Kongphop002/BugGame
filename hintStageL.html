@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<script>
+
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+
+    function playSong() {
+        new Audio("./sound/song.mp3").play()
+    }
+
+    async function goPlus() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "plus1.html";
+    }
+
+    function sound() {
+        new Audio("./sound/soundHint.mp3").play()
+    }
+
+</script>
+
+<style>
+    body {
+        background-image: url("./img/bgHint.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    div.btnNext {
+        padding-left: 85%;
+        /* padding-top: 5%; */
+    }
+
+    div.imgClick {
+        padding-left: 30%;
+        padding-top: 5%;
+    }
+
+    .effect:hover {
+        filter: brightness(130%);
+    }
+</style>
+
+<body onload="playSong()">
+    <div class="imgClick">
+        <img src="./img/imgClick.png" onclick="sound()">
+    </div>
+    <div class="btnNext">
+        <img src="./img/btnNextP.png" onclick="goPlus()">
+    </div>
+</body>
+
+</html>

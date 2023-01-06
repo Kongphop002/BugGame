@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<script>
+    function delay(milliseconds) {
+        return new Promise(resolve => {
+            setTimeout(resolve, milliseconds);
+        });
+    }
+
+    async function goCounting() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "counting1.html";
+    }
+
+    async function goPlus() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "hintStageL.html";
+    }
+
+    async function goLanguage() {
+        new Audio("./sound/click.mp3").play()
+        await delay(100);
+        window.location.href = "language1.html";
+    }
+
+    function playSong() {
+        new Audio("./sound/song.mp3").play()
+    }
+</script>
+
+<style>
+    body {
+        background-image: url("./img/bgMenu.png");
+        background-repeat: no-repeat;
+        background-size: 100%;
+    }
+
+    div.btnCounting {
+        padding-left: 32%;
+        padding-top: 11%;
+    }
+
+    div.btnPlus {
+        padding-left: 32%;
+        padding-top: 1%;
+    }
+
+    div.btnLanguage {
+        padding-left: 32%;
+        padding-top: 1%;
+    }
+
+    .effect:hover {
+        filter: brightness(80%);
+    }
+
+</style>
+
+<body onload="playSong()">
+    <div class="btnCounting">
+        <img class="effect" src="./img/btnCounting.png" onclick="goCounting()">
+    </div>
+    <div class="btnPlus">
+        <img class="effect" src="./img/btnPlus.png" onclick="goPlus()">
+    </div>
+    <div class="btnLanguage">
+        <img class="effect" src="./img/btnLanguage.png" onclick="goLanguage()">
+    </div>
+</body>
+
+</html>
